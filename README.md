@@ -1,6 +1,6 @@
 # github-contribution-log
 
-# Contribution [#]: Resolve doc build warnings #3863
+# Contribution [#1]: Resolve doc build warnings #3863
 
 
 **Contribution Number:** 1  
@@ -20,7 +20,7 @@ I chose this issue because it has an immediate and visible impact on the documen
 
 ### Problem Description
 
-The pytorch/ao repository (also known as TorchAO) uses Sphinx, a document generator, to read plain text markdown and reStructuredText (RST) files in TorchAO’s docs folder and convert them into publishable HTML documents that are hosted on the official TorchAO documentation website. The problem is that when Sphinx is trying to build the publishable documents, it encounters files with RST/Markdown formatting issues, missing or broken links and references, missing files, and/or import failures. When Sphinx encounters these issues, it produces a warning but continues to build and publish the file. The result is that published material displayed may be visually malformed, not visible to users, or contain missing or broken parts. The goal of this issue is to find and fix the files that generate these warnings. At the start of the issue on 6/16/2025, there are currently 100 warning being generated. 
+The pytorch/ao repository (also known as TorchAO) uses Sphinx, a document generator, to read plain text markdown and reStructuredText (RST) files in TorchAO’s docs folder and convert them into publishable HTML documents that are hosted on the official TorchAO documentation website. The problem is that when Sphinx is trying to build the publishable documents, it encounters files with RST/Markdown formatting issues, missing or broken links and references, missing files, and/or import failures. When Sphinx encounters these issues, it produces a warning but continues to build and publish the file. The result is that published material displayed may be visually malformed, not visible to users, or contain missing or broken parts. The goal of this issue is to find and fix the files that generate these warnings. At the start of the issue on 6/17/2025, there are currently 4 warnings being generated. 
 
 ### Expected Behavior
 
@@ -40,19 +40,23 @@ The pytorch/ao repository (also known as TorchAO) uses Sphinx, a document genera
 
 ### Environment Setup
 
-[Notes on setting up your local development environment - challenges you faced, how you solved them]
+Setting up my local development environment was more involved than I expected. Because I am on a Windows computer, I had to use WSL2 (Windows Subsystem for Linux) with Ubuntu to run Linux commands like make html that don't work natively on Windows. I installed Miniconda inside Ubuntu to create an isolated virtual environment for the project, then installed the project dependencies by running the four install commands from the doc_build.yml workflow file. One challenge I ran into was that GitHub Desktop could not recognize my repository because it lives inside the WSL file system rather than directly on my Windows C drive, so I still need to resolve how to authenticate and push branches from Ubuntu to GitHub.
 
 ### Steps to Reproduce
 
-1. [Step 1]
-2. [Step 2]
-3. [Observed result]
+1. Created and activated a conda virtual environment using Python 3.11 inside Ubuntu
+2. Installed the project dependencies by running the four install commands derived from the doc_build.yml workflow file
+3. Navigated into the docs folder and ran make html to trigger Sphinx to build the documentation and reproduce the warnings
+4. Repeated step 3 three times to ensure the warning were triggered consistently
+5. Observed 3 warnings in the build output, confirming the issue exists in the current state of the repository
 
 ### Reproduction Evidence
 
 - **Commit showing reproduction:** [Link to commit in your fork]
-- **Screenshots/logs:** [If applicable]
-- **My findings:** [What you discovered during reproduction]
+- **Screenshots/logs:** Screenshot showing 3 warnings produced
+  <img width="1172" height="562" alt="before_screenshot_3warnings" src="https://github.com/user-attachments/assets/f65dff25-5a40-42a2-913f-46105da3d650" />
+
+- **My findings:** Observed 3 warnings in the build output, confirming the issue exists in the current state of the repository
 
 ---
 
