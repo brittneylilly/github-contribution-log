@@ -68,7 +68,7 @@ The root cause is that a document called `performant_kernels.rst` that exists in
 
 ### Proposed Solution
 
-[High-level description of your fix approach]
+Add the :orphan: Sphinx directive to the very first line of the `performant_kernels.rst` file. This tells Sphinx that the file is intentionally excluded from the toctree and suppresses the warning. The only file I expect to modify is docs/source/performant_kernels.rst.
 
 ### Implementation Plan
 
