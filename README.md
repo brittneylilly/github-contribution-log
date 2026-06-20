@@ -77,7 +77,8 @@ Using UMPIRE framework (adapted):
 **Understand:** 
 The file `performant_kernels.rst` exists in the docs folder but is not included in any toctree, causing Sphinx to throw a warning when running make html. Instead of throwing a warning, Sphinx should silently accept the file as intentionally excluded from any toctree.
 
-**Match:** [What similar patterns/solutions exist in the codebase?]
+**Match:** 
+Before implementing the fix, I searched the codebase using `grep -r "orphan"` docs/source and found that two other files already use the `:orphan:` directive: `docs/source/tutorials/index.rst` and `docs/source/tutorials/sg_execution_times.rst`, confirming this is an accepted pattern in this project.
 
 **Plan:** [Step-by-step implementation plan]
 1. [Modify file X to do Y]
