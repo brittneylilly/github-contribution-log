@@ -99,7 +99,12 @@ I reviewed the pytorch/ao `CONTRIBUTING.md` document. These were the pull reques
 6.	Complete the Contributor License Agreement ("CLA"): completed
 
 
-**Evaluate:** [How will you verify it works?]
+**Evaluate:** 
+Since this is a documentation-only change with no Python code modified, no test suite was required. Instead, I verified the fix worked by:
+1.	Running `make html` locally before the fix and confirming the warning “document isn't included in any toctree” was present for `performant_kernels.rst`
+2.	Adding `:orphan:` to `performant_kernels.rst` and running `make html` again. The warning was completely gone and the total number if warnings dropped from 3 to 2
+3.	Using ‘sphinx-serve’ to serve the documentation locally at ‘http://localhost:8081’ and visually confirmed the navigation and site structure looked identical before and after the fix
+
 
 ---
 
