@@ -64,7 +64,7 @@ Setting up my local development environment was more involved than I expected. B
 
 ### Analysis
 
-[Your analysis of the root cause - what's causing the issue?]
+The root cause is that a document called `performant_kernels.rst` that exists in the repository at docs/source/ is not referenced in any toctree located in docs/source/index.rst. Toctree is a Sphinx directive that inserts a table of contents tree at the specified location. According to the Sphinx documentation, all documents in the source directory must occur in some toctree directive, else Sphinx will throw a warning if it finds a file that is not included. Since performant_kernels.rst is neither included in a toctree or marked as an orphan, Sphinx throws the warning when make html is run. The `performant_kernels.rst` file only contains the word “TBA.” The Git history of the file reveals that it was created on April 17, 2024 and has never been updated since or integrated into the documentation structure.
 
 ### Proposed Solution
 
