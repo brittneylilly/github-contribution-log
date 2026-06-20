@@ -74,7 +74,8 @@ Add the :orphan: Sphinx directive to the very first line of the `performant_kern
 
 Using UMPIRE framework (adapted):
 
-**Understand:** [Restate the problem]
+**Understand:** 
+The file `performant_kernels.rst` exists in the docs folder but is not included in any toctree, causing Sphinx to throw a warning when running make html. Instead of throwing a warning, Sphinx should silently accept the file as intentionally excluded from any toctree.
 
 **Match:** [What similar patterns/solutions exist in the codebase?]
 
