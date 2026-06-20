@@ -64,11 +64,11 @@ Setting up my local development environment was more involved than I expected. B
 
 ### Analysis
 
-The root cause is that a document called `performant_kernels.rst` that exists in the repository at docs/source/ is not referenced in any toctree located in docs/source/index.rst. Toctree is a Sphinx directive that inserts a table of contents tree at the specified location. According to the Sphinx documentation, all documents in the source directory must occur in some toctree directive, else Sphinx will throw a warning if it finds a file that is not included. Since performant_kernels.rst is neither included in a toctree or marked as an orphan, Sphinx throws the warning when make html is run. The `performant_kernels.rst` file only contains the word “TBA.” The Git history of the file reveals that it was created on April 17, 2024 and has never been updated since or integrated into the documentation structure.
+The root cause is that a document called `performant_kernels.rst` that exists in the repository at docs/source/ is not referenced in any toctree located in `docs/source/index.rst`. Toctree is a Sphinx directive that inserts a table of contents tree at the specified location. According to the Sphinx documentation, all documents in the source directory must occur in some toctree directive, else Sphinx will throw a warning if it finds a file that is not included. Since performant_kernels.rst is neither included in a toctree or marked as an orphan, Sphinx throws the warning when make html is run. The `performant_kernels.rst` file only contains the word “TBA.” The Git history of the file reveals that it was created on April 17, 2024 and has never been updated since or integrated into the documentation structure.
 
 ### Proposed Solution
 
-Add the :orphan: Sphinx directive to the very first line of the `performant_kernels.rst` file. This tells Sphinx that the file is intentionally excluded from the toctree and suppresses the warning. The only file I expect to modify is docs/source/performant_kernels.rst.
+Add the `:orphan:` Sphinx directive to the very first line of the `performant_kernels.rst` file. This tells Sphinx that the file is intentionally excluded from the toctree and suppresses the warning. The only file I expect to modify is docs/source/performant_kernels.rst.
 
 ### Implementation Plan
 
@@ -81,9 +81,10 @@ The file `performant_kernels.rst` exists in the docs folder but is not included 
 Before implementing the fix, I searched the codebase using `grep -r "orphan"` docs/source and found that two other files already use the `:orphan:` directive: `docs/source/tutorials/index.rst` and `docs/source/tutorials/sg_execution_times.rst`, confirming this is an accepted pattern in this project.
 
 **Plan:** [Step-by-step implementation plan]
-1. [Modify file X to do Y]
-2. [Add function Z]
-3. [Update tests]
+1. Open `docs/source/performant_kernels.rst`
+2. Add `:orphan:` as the very first line of the file
+3. Run `make html` locally to confirm the warning is gone
+4. Verify the documentation site still looks correct using `sphinx-serve`
 
 **Implement:** [Link to your branch/commits as you work]
 
