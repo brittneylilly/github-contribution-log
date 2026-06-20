@@ -80,15 +80,24 @@ The file `performant_kernels.rst` exists in the docs folder but is not included 
 **Match:** 
 Before implementing the fix, I searched the codebase using `grep -r "orphan"` docs/source and found that two other files already use the `:orphan:` directive: `docs/source/tutorials/index.rst` and `docs/source/tutorials/sg_execution_times.rst`, confirming this is an accepted pattern in this project.
 
-**Plan:** [Step-by-step implementation plan]
+**Plan:** Step-by-step implementation plan
 1. Open `docs/source/performant_kernels.rst`
 2. Add `:orphan:` as the very first line of the file
 3. Run `make html` locally to confirm the warning is gone
 4. Verify the documentation site still looks correct using `sphinx-serve`
 
-**Implement:** [Link to your branch/commits as you work]
+**Implement:** 
+https://github.com/pytorch/ao/pull/4515 
 
-**Review:** [Self-review checklist - does it follow the project's contribution guidelines?]
+**Review:** 
+I reviewed the pytorch/ao `CONTRIBUTING.md` document. These were the pull request requirements along with information on how I enacted them:
+1.	Fork the repo and create your branch from main:  I created `fix-issue-3863` from main
+2.	If you've added code that should be tested, add tests:  Not applicable, this is a documentation-only change with no code added
+3.	If you've changed APIs, update the documentation: Not applicable, no API changes were made
+4.	Ensure the test suite passes: Not applicable, documentation-only change
+5.	Make sure your code lints, using ruff for linting: Not applicable, `:orphan:` is an RST directive, not Python code, so Ruff linting does not apply to this change
+6.	Complete the Contributor License Agreement ("CLA"): completed
+
 
 **Evaluate:** [How will you verify it works?]
 
