@@ -52,7 +52,9 @@ Setting up my local development environment was more involved than I expected. B
 
 ### Reproduction Evidence
 
-- **Commit showing reproduction:** [Link to commit in your fork]
+- **Commit showing reproduction:**
+  https://github.com/brittneylilly/pytorch_ao/commit/2138f14a51dd60f4ac2f93c4beddc6237a8006a5
+  
 - **Screenshots/logs:** Screenshot showing 3 warnings produced
   <img width="1172" height="562" alt="before_screenshot_3warnings" src="https://github.com/user-attachments/assets/f65dff25-5a40-42a2-913f-46105da3d650" />
 
@@ -139,8 +141,10 @@ Since this is a documentation-only change with no Python code modified, no test 
 
 ### Code Changes
 
-- **Files modified:** [List]
-- **Key commits:** [Links to important commits]
+- **Files modified:** Modified `performant_kernels.rst` file which exists in the repository at docs/source/ 
+- **Key commits:**
+  https://github.com/brittneylilly/pytorch_ao/commit/d18d039ab42cde7db2c983479f8a4c6fc0ebf20d
+  
 - **Approach decisions:** [Why you chose certain approaches]
 
 ---
