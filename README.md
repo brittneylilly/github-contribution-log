@@ -20,19 +20,23 @@ I chose this issue because it has an immediate and visible impact on the documen
 
 ### Problem Description
 
-The pytorch/ao repository (also known as TorchAO) uses Sphinx, a document generator, to read plain text markdown and reStructuredText (RST) files in TorchAO’s docs folder and convert them into publishable HTML documents that are hosted on the official TorchAO documentation website. The problem is that when Sphinx is trying to build the publishable documents, it encounters files with RST/Markdown formatting issues, missing or broken links and references, missing files, and/or import failures. When Sphinx encounters these issues, it produces a warning but continues to build and publish the file. The result is that published material displayed may be visually malformed, not visible to users, or contain missing or broken parts. The goal of this issue is to find and fix the files that generate these warnings. As of 6/18/2026, there are currently 3 warnings being generated. 
+The pytorch/ao repository (also known as TorchAO) uses Sphinx, a document generator, to read plain text markdown and reStructuredText (RST) files in TorchAO’s docs folder and convert them into publishable HTML documents that are hosted on the official TorchAO documentation website. The problem is that when Sphinx is trying to build the publishable documents, it encounters files with RST/Markdown formatting issues, missing or broken links and references, missing files, and/or import failures. When Sphinx encounters these issues, it produces a warning but continues to build and publish the file. The result is that published material displayed may be visually malformed, not visible to users, or contain missing or broken parts. The goal of this issue is to find and fix the files that generate these warnings. As of 6/18/2026, there are currently 3 warnings being generated. The 3 warnings are:
+1. WARNING: [autosummary] failed to import torchao.prototype.quantization.Int8DynamicActivationInt4WeightConfig
+2. WARNING: image file not readable: `eager_tutorials/output.png`
+3. WARNING: document isn't included in any toctree for `docs/source/performant_kernels.rst`
 
 ### Expected Behavior
 
-[What should happen?]
+When `make html` is run, no warnings should be produced.
 
 ### Current Behavior
 
-[What actually happens?]
+Running `make html' produces 3 warnings.
+
 
 ### Affected Components
 
-[Which parts of the codebase are involved?]
+Based on the warning messages, the parts of the codebase involved are: `prototype/quantization`, `eager_tutorials/output.png`, `docs/source/performant_kernels.rst`
 
 ---
 
@@ -124,20 +128,19 @@ Since this is a documentation-only change with no Python code modified, no test 
 - [ ] Integration scenario 2
 
 ### Manual Testing
-
-[What you tested manually and results]
+I tested my fix manually by running `make html` in the docs folder before and after adding `:orphan:` to `performant_kernels.rst`. Before making this change, the result of running `make html` the produced 3 warnings including the warning that `performant_kernels.rst` isn't included in any toctree. After adding `:orphan:` to `performant_kernels.rst`, I reran `make html` and the build produced only 2 warnings, confirming the toctree warning was completely resolved. I also used sphinx-serve to serve the documentation locally at http://localhost:8081 and visually confirmed that the navigation structure and site content looked identical before and after the fix, verifying that marking the file as orphan did not break or remove anything from the published documentation.
 
 ---
 
 ## Implementation Notes
 
-### Week [X] Progress
+### Week [2] Progress
 
-[What you built this week, challenges faced, decisions made]
+I set up my local development environment on windows using wsl2, ubuntu and miniconda. The biggest challenge I ran ran into was authenticating Git pushs from Ubuntu to GitHub. I resolved this issue by setting up and using an SSH Key.
 
-### Week [Y] Progress
+### Week [3] Progress
 
-[Continue documenting as you work]
+I reproduced the issue locally and identified 3 remaining warnings. 
 
 ### Code Changes
 
