@@ -116,17 +116,6 @@ Since this is a documentation-only change with no Python code modified, no test 
 
 ## Testing Strategy
 
-### Unit Tests
-
-- [ ] Test case 1: [Description]
-- [ ] Test case 2: [Description]
-- [ ] Test case 3: [Description]
-
-### Integration Tests
-
-- [ ] Integration scenario 1
-- [ ] Integration scenario 2
-
 ### Manual Testing
 I tested my fix manually by running `make html` in the docs folder before and after adding `:orphan:` to `performant_kernels.rst`. Before making this change, the result of running `make html` the produced 3 warnings including the warning that `performant_kernels.rst` isn't included in any toctree. After adding `:orphan:` to `performant_kernels.rst`, I reran `make html` and the build produced only 2 warnings, confirming the toctree warning was completely resolved. I also used sphinx-serve to serve the documentation locally at http://localhost:8081 and visually confirmed that the navigation structure and site content looked identical before and after the fix, verifying that marking the file as orphan did not break or remove anything from the published documentation.
 
@@ -154,36 +143,45 @@ I reproduced the issue locally and identified 3 remaining warnings.
 
 ## Pull Request
 
-**PR Link:** [GitHub PR URL when submitted]
+**PR Link:** 
+https://github.com/pytorch/ao/pull/4515
 
-**PR Description:** [Draft or final PR description - much of the content above can be adapted]
+**PR Description:** 
+
+Fix Sphinx toctree warning for performant_kernels.rst by:
+added `:orphan:` directive to `docs/source/performant_kernels.rst` to suppress the Sphinx build warning: document isn't included in any toctree
+Rationale:
+The `performant_kernels.rst` file only contains a "TBA" placeholder, and Git history shows it has not been modified since its creation on April 17, 2024.
+Resolves 1 doc build warning from issue #3863.
+
+Remaining doc build warnings after this fix (2):
+- [autosummary] failed to import torchao.prototype.quantization.Int8DynamicActivationInt4WeightConfig
+- image file not readable: eager_tutorials/output.png
 
 **Maintainer Feedback:**
-- [Date]: [Summary of feedback received]
-- [Date]: [How you addressed it]
+- June 19, 2026: pytorch-bot ran - no issues returned 
+- June 19, 2026: Meta CLA bot and checks ran - output: No conflicts with base branch. Changes can be cleanly merged.
 
-**Status:** [Awaiting review / Iterating / Approved / Merged]
-
+**Status:** 
+Awaiting Review
 ---
 
 ## Learnings & Reflections
 
 ### Technical Skills Gained
 
-[What you learned technically]
+I learned about sphinx document builder and how it's used to convert raw files into html files for viewing on website
 
 ### Challenges Overcome
 
-[What was hard and how you solved it]
+One challenge I ran into was that GitHub Desktop could not recognize my repository because it lives inside the WSL file system rather than directly on my Windows C drive, so I still need to resolve how to authenticate and push branches from Ubuntu to GitHub.
 
 ### What I'd Do Differently Next Time
 
-[Reflection on your process]
+From the beginning I would have focused on choosing a recently created issue, like one created within the last 2 weeks to 1 month max.
 
 ---
 
 ## Resources Used
 
-- [Link to helpful documentation]
-- [Tutorial or Stack Overflow post that helped]
-- [GitHub issues or discussions that helped]
+- Sphinx documentation: https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html
