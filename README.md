@@ -161,9 +161,11 @@ Remaining doc build warnings after this fix (2):
 **Maintainer Feedback:**
 - June 19, 2026: pytorch-bot ran - no issues returned 
 - June 19, 2026: Meta CLA bot and checks ran - output: No conflicts with base branch. Changes can be cleanly merged.
+- July 7, 2026: Maintainer said to removed a .txt file and the PR would be good to be merged.
 
 **Status:** 
-Awaiting Review
+Maintainer reviewed PR and gave feedback to remove a .txt file from the PR. I removed the file and repushed the branch. 
+I responded to maintainer's comment letting them know I completed teh removal. 
 ---
 
 ## Learnings & Reflections
