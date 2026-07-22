@@ -6,7 +6,7 @@
 **Contribution Number:** 1  
 **Student:** Brittney Lilly  
 **Issue:** https://github.com/pytorch/ao/issues/3863#event-26695524401  
-**Status:** Phase I Complete, Phase II Complete, Phase III Complete, Phase IV Complete
+**Status:** Phase IV Complete and PR Merged
 
 ---
 
@@ -137,8 +137,10 @@ I reproduced the issue locally and identified 3 remaining warnings.
 - **Key commits:**
   https://github.com/brittneylilly/pytorch_ao/commit/d18d039ab42cde7db2c983479f8a4c6fc0ebf20d
   
-- **Approach decisions:** [Why you chose certain approaches]
-
+- **Approach decisions:**
+The `performant_kernels.rst` file causing the warning that this PR suppresses, only contains a "TBA" placeholder,
+and Git history shows it has not been modified since its creation on April 17, 2024. Therefore, per the Sphinx
+documentation, I added the `:orphan:` directive to the file so that it is ignored during the Sphinx build.
 ---
 
 ## Pull Request
@@ -149,7 +151,7 @@ https://github.com/pytorch/ao/pull/4515
 **PR Description:** 
 
 Fix Sphinx toctree warning for performant_kernels.rst by:
-added `:orphan:` directive to `docs/source/performant_kernels.rst` to suppress the Sphinx build warning: document isn't included in any toctree
+added `:orphan:` directive to `docs/source/performant_kernels.rst` to suppress the Sphinx build warning: document isn't included in any toctree.
 Rationale:
 The `performant_kernels.rst` file only contains a "TBA" placeholder, and Git history shows it has not been modified since its creation on April 17, 2024.
 Resolves 1 doc build warning from issue #3863.
@@ -164,8 +166,7 @@ Remaining doc build warnings after this fix (2):
 - July 7, 2026: Maintainer said to removed a .txt file and the PR would be good to be merged.
 
 **Status:** 
-Maintainer reviewed PR and gave feedback to remove a .txt file from the PR. I removed the file and repushed the branch. 
-I responded to maintainer's comment letting them know I completed teh removal. 
+PR merged on 7/20/2026
 ---
 
 ## Learnings & Reflections
